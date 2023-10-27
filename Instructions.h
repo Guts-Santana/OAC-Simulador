@@ -15,24 +15,24 @@ enum REGISTERS {
 };
 
 //Banco de Registradores
-int32_t reg[32];
+extern int32_t reg[32];
 
 //Dados importantes
-int32_t pc;
-int32_t ri; //Word lida da memoria
+extern int32_t pc;
+extern int32_t ri; //Word lida da memoria
 
 //Dados da WORD
-int32_t opcode;
-int32_t rd; //Registrador destino
-int32_t funct3; //Funct3
-int32_t rs1; //Registrador usado
-int32_t rs2; //Registrador usado
-int32_t funct7; //Funct7
+extern int32_t opcode;
+extern int32_t rd; //Registrador destino
+extern int32_t funct3; //Funct3
+extern int32_t rs1; //Registrador usado
+extern int32_t rs2; //Registrador usado
+extern int32_t funct7; //Funct7
 
 
-int32_t imm; //Imediato
-int32_t shamt; //Shamt
-int fim = 0; //Para encerrar o programa;
+extern int32_t imm; //Imediato
+extern int32_t shamt; //Shamt
+extern int fim; //Para encerrar o programa;
 
 enum opcodes{
     ILoad = 0x03, //LB, LW, LBU
@@ -64,6 +64,8 @@ enum funct7{
     SUB7 = 0x20,
     SRAI7 = 0x20
 };
+
+void clear_reg();
 
 int32_t funct_Im();
 

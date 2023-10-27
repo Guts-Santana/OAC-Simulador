@@ -3,6 +3,33 @@
 #include <stdlib.h>
 #include <stdint.h>
 
+//Banco de Registradores
+int32_t reg[32];
+
+//Dados importantes
+int32_t pc;
+int32_t ri; //Word lida da memoria
+
+//Dados da WORD
+int32_t opcode;
+int32_t rd; //Registrador destino
+int32_t funct3; //Funct3
+int32_t rs1; //Registrador usado
+int32_t rs2; //Registrador usado
+int32_t funct7; //Funct7
+
+
+int32_t imm; //Imediato
+int32_t shamt; //Shamt
+int fim = 0; //Para encerrar o programa;
+
+void clear_reg(){
+    for (int i = 0; i < 32; i++)
+    {
+        reg[i] = 0;
+    }
+    
+}
 int32_t funct_Im() {
     int32_t im;
     int32_t tmp;
@@ -232,7 +259,7 @@ void execute(){
         switch (reg[A7])
         {
         case 1:
-            printf("%i\n", reg[A0]);
+            printf("%i", reg[A0]);
             break;
 
         case 4:
@@ -271,10 +298,7 @@ void execute(){
 }
 
 void step(){
-    //getchar();
     fetch();
     decode();
-    //printf("%x opc\n", opcode);
     execute();
-    //dump_reg();
 }

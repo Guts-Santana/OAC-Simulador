@@ -3,6 +3,9 @@
 #include <stdlib.h>
 #include <stdint.h>
 
+
+int32_t mem[MEM_SIZE];
+
 void clear_mem()
 {
 	for (int i = 0; i < MEM_SIZE; ++i)
@@ -45,7 +48,7 @@ int32_t lb(int32_t address, int32_t kte) {
 int32_t lw(int32_t address, int32_t kte){
     int32_t dado;
     if ((address+kte) > 4*MEM_SIZE){
-        printf("Erro1");
+        printf("Erro LW");
         return 0;
     }
 
@@ -56,7 +59,7 @@ int32_t lw(int32_t address, int32_t kte){
 int32_t lbu(int32_t address, int32_t kte){
     uint32_t dado;
     if ((address + kte) > MEM_SIZE*4) {
-        printf("Erro2");
+        printf("Erro LBU");
         return 0;
     }
     int32_t pos = address + kte;

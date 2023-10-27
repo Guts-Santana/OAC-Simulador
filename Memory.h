@@ -4,7 +4,7 @@
 
 #define MEM_SIZE 4096
 
-int32_t mem[MEM_SIZE];
+extern int32_t mem[MEM_SIZE];
 
 void clear_mem();
 

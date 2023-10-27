@@ -4,17 +4,19 @@ CFLAGS = -std=c11 -Wall
 all: Simulador
 	./Simulador
 
-Simulador: memoria.o codigo.o Simulador.o
-	$(CC) $(CFLAGS) memoria.o codigo.o Simulador.o -o Simulador
+compile: Memory.o Instructions.o Simulador.o
 
-Simulador.o: Simulador.c memoria.h codigo.h 
+Simulador: Memory.o Instructions.o Simulador.o
+	$(CC) $(CFLAGS) Memory.o Instructions.o Simulador.o -o Simulador
+
+Simulador.o: Simulador.c Memory.h Instructions.h 
 	$(CC) $(CFLAGS) -c Simulador.c
 
-memoria.o: memoria.c memoria.h
-	$(CC) $(CFLAGS) -c memoria.c
+Memory.o: Memory.c Memory.h
+	$(CC) $(CFLAGS) -c Memory.c
 
-codigo.o: codigo.c codigo.h
-	$(CC) $(CFLAGS) -c codigo.c
+Instructions.o: Instructions.c Instructions.h
+	$(CC) $(CFLAGS) -c Instructions.c
 
 clean:
-	rm -rf *.o main
+	rm -rf *.o Simulador
